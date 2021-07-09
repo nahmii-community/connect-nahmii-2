@@ -1,6 +1,6 @@
 # connect-nahmii-2
 
-A simple UX to connect to the Nahmii 2 testnet.
+A simple UX to connect to the Nahmii 2 testnet. A live version can be found [here](https://nahmii-community.github.io/connect-nahmii-2/).
 
 ## Developing
 
