@@ -18,71 +18,72 @@
 <div class="main">
 	<h1>Nahmii 2.0 connect</h1>
 	{#if acceptedNetwork}
-	<div class="card">
-		<div class="row"><h2>Nahmii 2.0 L1 Testnet</h2></div>
-		<div class="row">
-			<div class="item">Network</div>
-			<div class="item">Nahmii 2.0 L1 Testnet</div>
+		<div class="card">
+			<div class="row"><h2>Nahmii 2.0 L1 Testnet</h2></div>
+			<div class="row">
+				<div class="item">Network</div>
+				<div class="item">Nahmii 2.0 L1 Testnet</div>
+			</div>
+			<div class="row">
+				<div class="item">Chain ID</div>
+				<div class="item">31337</div>
+			</div>
+			<div class="row">
+				<div class="item">Symbol</div>
+				<div class="item">ETH</div>
+			</div>
+			<div class="row">
+				<div class="item">RPC URL</div>
+				<div class="item">https://l1.testnet.nahmii.io/</div>
+			</div>
+			<button
+				on:click={() =>
+					addNetwork('Nahmii 2.0 L1 Testnet', '0x7a69', [`https://l1.testnet.nahmii.io/`])}
+				disabled={awaitingApproval}>Add Nahmii L1</button
+			>
 		</div>
-		<div class="row">
-			<div class="item">Chain ID</div>
-			<div class="item">31337</div>
+		<div class="card">
+			<div class="row"><h2>Nahmii 2.0 L2 Testnet</h2></div>
+			<div class="row">
+				<div class="item">Network</div>
+				<div class="item">Nahmii 2.0 L2 Testnet</div>
+			</div>
+			<div class="row">
+				<div class="item">Chain ID</div>
+				<div class="item">555</div>
+			</div>
+			<div class="row">
+				<div class="item">Symbol</div>
+				<div class="item">ETH</div>
+			</div>
+			<div class="row">
+				<div class="item">RPC URL</div>
+				<div class="item">https://l2.testnet.nahmii.io/</div>
+			</div>
+			<button
+				on:click={() =>
+					addNetwork('Nahmii 2.0 L2 Testnet', '0x22b', [`https://l2.testnet.nahmii.io/`])}
+				disabled={awaitingApproval}>Add Nahmii L2</button
+			>
 		</div>
-		<div class="row">
-			<div class="item">Symbol</div>
-			<div class="item">ETH</div>
-		</div>
-		<div class="row">
-			<div class="item">RPC URL</div>
-			<div class="item">https://l1.testnet.nahmii.io/</div>
-		</div>
-		<button
-			on:click={() =>
-				addNetwork('Nahmii 2.0 L1 Testnet', '0x7a69', [`https://l1.testnet.nahmii.io/`])}
-			disabled={awaitingApproval}>Add Nahmii L1</button
-		>
-	</div>
-	<div class="card">
-		<div class="row"><h2>Nahmii 2.0 L2 Testnet</h2></div>
-		<div class="row">
-			<div class="item">Network</div>
-			<div class="item">Nahmii 2.0 L2 Testnet</div>
-		</div>
-		<div class="row">
-			<div class="item">Chain ID</div>
-			<div class="item">555</div>
-		</div>
-		<div class="row">
-			<div class="item">Symbol</div>
-			<div class="item">ETH</div>
-		</div>
-		<div class="row">
-			<div class="item">RPC URL</div>
-			<div class="item">https://l2.testnet.nahmii.io/</div>
-		</div>
-		<button
-			on:click={() =>
-				addNetwork('Nahmii 2.0 L2 Testnet', '0x22b', [`https://l2.testnet.nahmii.io/`])}
-			disabled={awaitingApproval}>Add Nahmii L2</button
-		>
-	</div>
 	{:else}
-	<div class="card">
-		<div class="row">User rejected request or did not install an Ethereum provider like MetaMask.</div>
-		<button
-			on:click={reset}>Click to continue</button
-		>
-	</div>
+		<div class="card">
+			<div class="row">
+				User rejected request or did not install an Ethereum provider like MetaMask.
+			</div>
+			<button on:click={reset}>Click to continue</button>
+		</div>
 	{/if}
 </div>
 
 <style>
 	.main {
 		font-family: 'Roboto', sans-serif;
+		font-size: 12px;
 		background: #15202b;
 		color: white;
 		margin: auto;
-		width: 32rem;
+		width: 20rem;
 		text-align: center;
 	}
 
@@ -108,7 +109,7 @@
 	.item {
 		display: inline-block;
 		padding: 10px;
-		margin: 5px;
+		margin: 3px;
 		border-width: 1px;
 		border-style: solid;
 		border-color: white;
@@ -125,13 +126,28 @@
 		background: rgb(255, 6, 184);
 		opacity: 0.8;
 		transition: 0.3s;
+		margin: 0.6rem;
 	}
 
 	button:disabled {
-		background: rgba(48, 48, 48, 0.1)
+		background: rgba(48, 48, 48, 0.1);
 	}
 
-	button:hover { 
+	button:hover {
 		opacity: 1;
+	}
+
+	@media (min-width: 32rem) {
+		.main {
+			width: 24rem;
+			font-size: 12px;
+		}
+	}
+
+	@media (min-width: 36rem) {
+		.main {
+			width: 32rem;
+			font-size: 14px;
+		}
 	}
 </style>
