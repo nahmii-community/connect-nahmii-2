@@ -4,9 +4,9 @@
 	let awaitingApproval = false;
 	let acceptedNetwork = true;
 
-	async function addNetwork(chainName, chainId, rpcURLs) {
+	async function addNetwork(blockExplorerUrls, chainName, chainId, rpcUrls) {
 		awaitingApproval = true;
-		acceptedNetwork = await setupNetwork(chainName, chainId, rpcURLs);
+		acceptedNetwork = await setupNetwork(blockExplorerUrls, chainName, chainId, rpcUrls);
 		awaitingApproval = false;
 	}
 
@@ -19,38 +19,14 @@
 	<h1>Nahmii 2.0 connect</h1>
 	{#if acceptedNetwork}
 		<div class="card">
-			<div class="row"><h2>Nahmii 2.0 L1 Testnet</h2></div>
+			<div class="row"><h2>Nahmii 2.0 - Ropsten</h2></div>
 			<div class="row">
 				<div class="item">Network</div>
-				<div class="item">Nahmii 2.0 L1 Testnet</div>
+				<div class="item">Nahmii 2.0 - Ropsten</div>
 			</div>
 			<div class="row">
 				<div class="item">Chain ID</div>
-				<div class="item">31337</div>
-			</div>
-			<div class="row">
-				<div class="item">Symbol</div>
-				<div class="item">ETH</div>
-			</div>
-			<div class="row">
-				<div class="item">RPC URL</div>
-				<div class="item">https://l1.testnet.nahmii.io/</div>
-			</div>
-			<button
-				on:click={() =>
-					addNetwork('Nahmii 2.0 L1 Testnet', '0x7a69', [`https://l1.testnet.nahmii.io/`])}
-				disabled={awaitingApproval}>Add Nahmii L1</button
-			>
-		</div>
-		<div class="card">
-			<div class="row"><h2>Nahmii 2.0 L2 Testnet</h2></div>
-			<div class="row">
-				<div class="item">Network</div>
-				<div class="item">Nahmii 2.0 L2 Testnet</div>
-			</div>
-			<div class="row">
-				<div class="item">Chain ID</div>
-				<div class="item">555</div>
+				<div class="item">5553</div>
 			</div>
 			<div class="row">
 				<div class="item">Symbol</div>
@@ -60,10 +36,16 @@
 				<div class="item">RPC URL</div>
 				<div class="item">https://l2.testnet.nahmii.io/</div>
 			</div>
+			<div class="row">
+				<div class="item">Block Explorer URL</div>
+				<div class="item">https://explorer.testnet.nahmii.io/</div>
+			</div>
 			<button
 				on:click={() =>
-					addNetwork('Nahmii 2.0 L2 Testnet', '0x22b', [`https://l2.testnet.nahmii.io/`])}
-				disabled={awaitingApproval}>Add Nahmii L2</button
+					addNetwork([`https://explorer.testnet.nahmii.io/`], 'Nahmii 2.0 - Ropsten', '0x15B1', [
+						`https://l2.testnet.nahmii.io/`
+					])}
+				disabled={awaitingApproval}>Add Nahmii Ropsten</button
 			>
 		</div>
 	{:else}
@@ -90,7 +72,7 @@
 	.card {
 		display: flex;
 		flex-direction: column;
-		background: #162330;
+		background: #1a2a3a;
 		padding: 15px;
 		border-radius: 6px;
 		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);

@@ -1,4 +1,4 @@
-export const setupNetwork = async (chainName, chainId, rpcURLs) => {
+export const setupNetwork = async (blockExplorerUrls, chainName, chainId, rpcUrls) => {
 	const provider = window.ethereum;
 	if (provider) {
 		try {
@@ -6,14 +6,15 @@ export const setupNetwork = async (chainName, chainId, rpcURLs) => {
 				method: 'wallet_addEthereumChain',
 				params: [
 					{
-						chainId: chainId,
-						chainName: chainName,
+						blockExplorerUrls,
+						chainId,
+						chainName,
 						nativeCurrency: {
 							name: 'Ethereum',
 							symbol: 'ETH',
 							decimals: 18
 						},
-						rpcUrls: rpcURLs
+						rpcUrls
 					}
 				]
 			});
