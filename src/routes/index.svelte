@@ -3,6 +3,22 @@
 
 	let awaitingApproval = false;
 	let acceptedNetwork = true;
+	let networks = [
+		{
+			chainName: "Nahmii",
+			chainId: 5551,
+			symbol: "ETH",
+			rpcUrls: ["https://l2.nahmii.io/"],
+			blockExplorerUrls: ["https://explorer.nahmii.io/"],
+		},
+		{
+			chainName: "Nahmii Ropsten",
+			chainId: 5553,
+			symbol: "ETH",
+			rpcUrls: ["https://l2.testnet.nahmii.io/"],
+			blockExplorerUrls: ["https://explorer.testnet.nahmii.io/"],
+		}
+	]
 
 	async function addNetwork(blockExplorerUrls, chainName, chainId, rpcUrls) {
 		awaitingApproval = true;
@@ -18,36 +34,36 @@
 <div class="main">
 	<h1>Nahmii 2.0 connect</h1>
 	{#if acceptedNetwork}
+		{#each networks as {chainName, chainId, symbol, rpcUrls, blockExplorerUrls}}
 		<div class="card">
-			<div class="row"><h2>Nahmii 2.0 - Ropsten</h2></div>
+			<div class="row"><h2>{chainName}</h2></div>
 			<div class="row">
 				<div class="item">Network</div>
-				<div class="item">Nahmii 2.0 - Ropsten</div>
+				<div class="item">{chainName}</div>
 			</div>
 			<div class="row">
 				<div class="item">Chain ID</div>
-				<div class="item">5553</div>
+				<div class="item">{chainId}</div>
 			</div>
 			<div class="row">
 				<div class="item">Symbol</div>
-				<div class="item">ETH</div>
+				<div class="item">{symbol}</div>
 			</div>
 			<div class="row">
 				<div class="item">RPC URL</div>
-				<div class="item">https://l2.testnet.nahmii.io/</div>
+				<div class="item">{rpcUrls[0]}</div>
 			</div>
 			<div class="row">
 				<div class="item">Block Explorer URL</div>
-				<div class="item">https://explorer.testnet.nahmii.io/</div>
+				<div class="item">{blockExplorerUrls[0]}</div>
 			</div>
 			<button
 				on:click={() =>
-					addNetwork([`https://explorer.testnet.nahmii.io/`], 'Nahmii 2.0 - Ropsten', '0x15B1', [
-						`https://l2.testnet.nahmii.io/`
-					])}
-				disabled={awaitingApproval}>Add Nahmii Ropsten</button
+					addNetwork(blockExplorerUrls, chainName, `0x${chainId.toString(16)}`, rpcUrls)}
+				disabled={awaitingApproval}>Add {chainName}</button
 			>
 		</div>
+		{/each}
 	{:else}
 		<div class="card">
 			<div class="row">
