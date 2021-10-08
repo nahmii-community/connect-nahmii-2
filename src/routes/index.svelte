@@ -9,7 +9,7 @@
 			chainId: 5551,
 			symbol: "ETH",
 			rpcUrls: ["https://l2.nahmii.io/"],
-			blockExplorerUrls: ["https://explorer.nahmii.io/"],
+			blockExplorerUrls: [],
 		},
 		{
 			chainName: "Nahmii Testnet",
@@ -49,14 +49,18 @@
 				<div class="item">Symbol</div>
 				<div class="item">{symbol}</div>
 			</div>
+			{#if rpcUrls?.length > 0}
 			<div class="row">
 				<div class="item">RPC URL</div>
 				<div class="item">{rpcUrls[0]}</div>
 			</div>
+			{/if}
+			{#if blockExplorerUrls?.length > 0}
 			<div class="row">
 				<div class="item">Block Explorer URL</div>
 				<div class="item">{blockExplorerUrls[0]}</div>
 			</div>
+			{/if}
 			<button
 				on:click={() =>
 					addNetwork(blockExplorerUrls, chainName, `0x${chainId.toString(16)}`, rpcUrls)}
