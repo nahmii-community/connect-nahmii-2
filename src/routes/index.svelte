@@ -9,7 +9,7 @@
 			chainId: 5551,
 			symbol: "ETH",
 			rpcUrls: ["https://l2.nahmii.io/"],
-			blockExplorerUrls: ["https://explorer.nahmii.io/"],
+			blockExplorerUrls: [],
 		},
 		{
 			chainName: "Nahmii Testnet",
