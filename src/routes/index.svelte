@@ -5,14 +5,14 @@
 	let acceptedNetwork = true;
 	let networks = [
 		{
-			chainName: "Nahmii",
+			chainName: "Nahmii Mainnet",
 			chainId: 5551,
 			symbol: "ETH",
 			rpcUrls: ["https://l2.nahmii.io/"],
 			blockExplorerUrls: ["https://explorer.nahmii.io/"],
 		},
 		{
-			chainName: "Nahmii Ropsten",
+			chainName: "Nahmii Testnet",
 			chainId: 5553,
 			symbol: "ETH",
 			rpcUrls: ["https://l2.testnet.nahmii.io/"],
